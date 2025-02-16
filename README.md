@@ -1,121 +1,50 @@
-Bank X - AI-Powered Biometric Banking
+# React + TypeScript + Vite
 
-🚀 Overview
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Bank X is an AI-driven digital banking platform that eliminates traditional PINs and passwords by leveraging facial and voice recognition for secure authentication. It also features instant AI-powered loan approvals using blockchain-based smart contracts, ensuring bias-free and seamless financial transactions.
+Currently, two official plugins are available:
 
-🎯 Key Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-🔹 AI-Powered Authentication
+## Expanding the ESLint configuration
 
-Facial Recognition 🧑‍💻 – Authenticate transactions using AI-driven face detection.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Voice Recognition 🎙️ – Secure payments by speaking a passphrase.
+- Configure the top-level `parserOptions` property like this:
 
-Eliminates PINs & Passwords – Enhances security while improving user experience.
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-🔹 Instant AI-Powered Loan Approvals
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-AI-driven credit analysis 📊 – Bias-free approvals based on financial history.
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-Blockchain-backed smart contracts 🔗 – Secure, automated loan processing.
-
-One-click disbursal 💸 – No paperwork, no intermediaries.
-
-🔹 Secure & Seamless Transactions
-
-UPI & QR-based Payments 📲 – Scan & pay with biometric authentication.
-
-AES-256 Encryption 🔒 – End-to-end security for user data.
-
-Fraud Detection with Blockchain 🛡️ – Prevents identity theft & cyber threats.
-
-🏗️ Tech Stack
-
-Frontend: React Native / Flutter
-
-Backend: Node.js, Express, MongoDB/Firebase
-
-AI: TensorFlow.js (Facial & Voice Recognition)
-
-Blockchain: Ethereum / Hyperledger for loan smart contracts
-
-Payments: UPI, Razorpay, Paytm APIs
-
-Security: AES-256 Encryption, JWT Auth
-
-🛠️ Installation & Setup
-
-1️⃣ Clone the Repository
-
- git clone https://github.com/your-username/BankX.git
- cd BankX
-
-2️⃣ Install Dependencies
-
-npm install  # or yarn install
-
-3️⃣ Set Up Environment Variables
-
-Create a .env file in the root directory and add:
-
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-ANTHROPIC_API_KEY=your_anthropic_api_key
-
-4️⃣ Run the Application
-
-npm start  # or yarn start
-
-5️⃣ API Endpoints
-
-Method
-
-Endpoint
-
-Description
-
-POST
-
-/api/register
-
-Register a new user
-
-POST
-
-/api/login
-
-User login
-
-POST
-
-/api/transactions
-
-Make a transaction
-
-GET
-
-/api/transactions
-
-Fetch user transactions
-
-POST
-
-/api/chat
-
-AI-powered loan inquiry
-
-📌 Future Enhancements
-
-Voice-enabled banking assistant 🗣️
-
-Personalized financial insights 📈
-
-Cross-border transactions using crypto 🌍
-
-🤝 Contributing
-
-We welcome contributions! Please submit a pull request or raise an issue.
-
-
-
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
