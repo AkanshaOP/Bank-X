@@ -117,11 +117,5 @@ Cross-border transactions using crypto 🌍
 
 We welcome contributions! Please submit a pull request or raise an issue.
 
-📜 License
 
-This project is licensed under the MIT License.
-
-📞 Contact
-
-For support, email us at: support@bankx.com
 
